@@ -1,0 +1,16 @@
+<h2>To-Do List</h2>
+
+<form (ngSubmit)="addTask()">
+  <input [(ngModel)]="newTask.title" name="title" required placeholder="Nueva tarea">
+  <button type="submit">Agregar</button>
+</form>
+
+<p *ngIf="tasks.length === 0">No hay tareas aún.</p>
+
+<ul>
+  <li *ngFor="let task of tasks">
+    <input type="checkbox" [(ngModel)]="task.isCompleted" (change)="updateTask(task)">
+    <span [class.completed]="task.isCompleted">{{ task.title }}</span>
+    <button (click)="deleteTask(task.id)">Eliminar</button>
+  </li>
+</ul> 
